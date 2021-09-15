@@ -243,3 +243,4 @@ ModelManifest.xml
 .fake/
 
 *.vcxproj.user
+copy_bin.bat

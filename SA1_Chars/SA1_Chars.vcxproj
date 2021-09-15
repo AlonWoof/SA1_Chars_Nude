@@ -87,6 +87,10 @@
       <AdditionalDependencies>sadx-dc-lighting.lib;$(ProjectDir)..\bin\ModLoaderCommon.lib;$(ProjectDir)..\bin\libmodutils.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <DelayLoadDLLs>sadx-dc-lighting.dll</DelayLoadDLLs>
     </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\sadx-mod-loader\mod-loader-common\ModLoaderCommon\IniFile.hpp" />

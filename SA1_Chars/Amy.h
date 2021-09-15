@@ -423,10 +423,13 @@ NJS_VECTOR normal_8D4AD8C99EAEA17AA56[] = {
 	{ -0.911676f, 0.122674f, 0.392172f }
 };
 
-NJS_MODEL_SADX attach_00009C28 = { nudieamy_pos, nudieamy_nrm, LengthOfArray<Sint32>(nudieamy_pos), nudieamy_meshset, nudieamy_matlist, LengthOfArray<Uint16>(nudieamy_meshset), 
+NJS_MODEL_SADX nudieamy_attach = { nudieamy_pos, nudieamy_nrm, LengthOfArray<Sint32>(nudieamy_pos), nudieamy_meshset, nudieamy_matlist, LengthOfArray<Uint16>(nudieamy_meshset), 
 LengthOfArray<Uint16>(nudieamy_matlist),{ 0, -0.058199f, 0 }, 2.645761f, NULL };
 
-NJS_OBJECT object_00009C54 = { NJD_EVAL_UNIT_POS | NJD_EVAL_UNIT_ANG | NJD_EVAL_UNIT_SCL | NJD_EVAL_BREAK, &attach_00009C28, 0, 0, 0, 0, 0, 0, 1, 1, 1, NULL, NULL };
+NJS_MODEL_SADX nudieamy_perkynips_attach = { nudieamy_perkynips_pos, nudieamy_perkynips_nrm, LengthOfArray<Sint32>(nudieamy_perkynips_pos), nudieamy_perkynips_meshset, nudieamy_perkynips_matlist, LengthOfArray<Uint16>(nudieamy_perkynips_meshset),
+LengthOfArray<Uint16>(nudieamy_perkynips_matlist),{ 0, -0.058199f, 0 }, 2.645761f, NULL };
+
+NJS_OBJECT object_00009C54 = { NJD_EVAL_UNIT_POS | NJD_EVAL_UNIT_ANG | NJD_EVAL_UNIT_SCL | NJD_EVAL_BREAK, &nudieamy_attach, 0, 0, 0, 0, 0, 0, 1, 1, 1, NULL, NULL };
 
 NJS_OBJECT object_00009C88 = { NJD_EVAL_UNIT_ANG | NJD_EVAL_UNIT_SCL | NJD_EVAL_HIDE | NJD_EVAL_BREAK, NULL, -0.011246f, 0.695499f, -0.001299f, 0, 0, 0, 1, 1, 1, NULL, NULL };
 

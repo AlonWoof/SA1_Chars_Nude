@@ -6,6 +6,7 @@
 #include "SADXModLoader.h"
 #include "NudieKnuckles.h"
 
+
 NJS_MATERIAL material_8D49E33C12FE7A2A594[] = {
 	{ { 0xFFB2B2B2 },{ 0xFFFFFFFF }, 11, 0, NJD_D_100 | NJD_FILTER_BILINEAR | NJD_FLAG_CLAMP_V | NJD_FLAG_CLAMP_U | NJD_FLAG_USE_ALPHA | NJD_FLAG_USE_TEXTURE | NJD_DA_INV_SRC | NJD_SA_SRC }
 };
@@ -4899,9 +4900,12 @@ NJS_VECTOR normal_8D4912BA9B17227B11A[] = {
 	{ 0.13207f, 0.8655789f, 0.483043f }
 };
 
-NJS_MODEL_SADX attach_002D6630 = { nudieknuckles_pos, nudieknuckles_nrm, LengthOfArray<Sint32>(nudieknuckles_pos), nudieknuckles_meshset, nudieknuckles_matlist, LengthOfArray<Uint16>(nudieknuckles_meshset), LengthOfArray<Uint16>(nudieknuckles_matlist),{ -0.129754f, -0.237348f, 0 }, 1.711952f, NULL };
+NJS_MODEL_SADX nudieknuckles_attach = { nudieknuckles_pos, nudieknuckles_nrm, LengthOfArray<Sint32>(nudieknuckles_pos), nudieknuckles_meshset, nudieknuckles_matlist, LengthOfArray<Uint16>(nudieknuckles_meshset), LengthOfArray<Uint16>(nudieknuckles_matlist),{ -0.129754f, -0.237348f, 0 }, 1.711952f, NULL };
+NJS_MODEL_SADX nudieknuckles_smallballs_attach = { nudieknuckles_smallballs_pos, nudieknuckles_smallballs_nrm, LengthOfArray<Sint32>(nudieknuckles_smallballs_pos), nudieknuckles_smallballs_meshset, 
+nudieknuckles_smallballs_matlist, LengthOfArray<Uint16>(nudieknuckles_smallballs_meshset), LengthOfArray<Uint16>(nudieknuckles_smallballs_matlist),{ -0.129754f, -0.237348f, 0 }, 1.711952f, NULL };
 
-NJS_OBJECT object_002D665C = { NJD_EVAL_UNIT_POS | NJD_EVAL_UNIT_ANG | NJD_EVAL_BREAK, &attach_002D6630, 0, 0, 0, 0, 0, 0, 1, 1.05f, 1, NULL, NULL };
+
+NJS_OBJECT object_002D665C = { NJD_EVAL_UNIT_POS | NJD_EVAL_UNIT_ANG | NJD_EVAL_BREAK, &nudieknuckles_attach, 0, 0, 0, 0, 0, 0, 1, 1.05f, 1, NULL, NULL };
 
 NJS_OBJECT object_002D6690 = { NJD_EVAL_UNIT_ANG | NJD_EVAL_UNIT_SCL | NJD_EVAL_HIDE | NJD_EVAL_BREAK, NULL, 0, -0.629896f, -0.971041f, 0, 0, 0, 1, 1, 1, NULL, NULL };
 

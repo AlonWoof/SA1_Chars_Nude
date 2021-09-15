@@ -5,6 +5,7 @@
 
 #include "SADXModLoader.h"
 #include "NudieSonic.h"
+#include "NudieTails.h"
 
 NJS_OBJECT object_0055E500 = { NJD_EVAL_UNIT_ANG | NJD_EVAL_UNIT_SCL | NJD_EVAL_HIDE | NJD_EVAL_BREAK, NULL, 0, -0.546144f, 0, 0, 0, 0, 1, 1, 1, NULL, NULL };
 
@@ -3851,10 +3852,13 @@ NJS_VECTOR normal_8D445DEFEB3C0F90F62[] = {
 	{ -0.029182f, -0.153265f, -0.987754f }
 };
 
-NJS_MODEL_SADX attach_0056AD1C = { nudiesonic_pos, nudiesonic_nrm, LengthOfArray(nudiesonic_pos), nudiesonic_meshset, 
+NJS_MODEL_SADX attach_nudiesonic = { nudiesonic_pos, nudiesonic_nrm, LengthOfArray(nudiesonic_pos), nudiesonic_meshset, 
 nudiesonic_matlist, LengthOfArray(nudiesonic_meshset), LengthOfArray(nudiesonic_matlist),{ 0.499601f, -0.045173f, 0 }, 1.826482f, NULL };
 
-NJS_OBJECT object_0056AD48 = { NJD_EVAL_UNIT_POS | NJD_EVAL_UNIT_ANG | NJD_EVAL_UNIT_SCL | NJD_EVAL_BREAK, &attach_0056AD1C, 0, 0, 0, 0, 0, 0, 1, 1, 1, NULL, &object_00569E20 };
+NJS_MODEL_SADX attach_nudiesonic_smallballs = { nudiesonic_smallballs_pos, nudiesonic_smallballs_nrm, LengthOfArray(nudiesonic_smallballs_pos),  nudiesonic_smallballs_meshset,
+ nudiesonic_smallballs_matlist, LengthOfArray(nudiesonic_smallballs_meshset), LengthOfArray(nudiesonic_smallballs_matlist),{ 0.499601f, -0.045173f, 0 }, 1.826482f, NULL };
+
+NJS_OBJECT object_0056AD48 = { NJD_EVAL_UNIT_POS | NJD_EVAL_UNIT_ANG | NJD_EVAL_UNIT_SCL | NJD_EVAL_BREAK, &attach_nudiesonic, 0, 0, 0, 0, 0, 0, 1, 1, 1, NULL, &object_00569E20 };
 
 NJS_OBJECT object_0056AD7C = { NJD_EVAL_UNIT_ANG | NJD_EVAL_UNIT_SCL | NJD_EVAL_HIDE | NJD_EVAL_BREAK, NULL, 0, -0.546144f, 0, 0, 0, 0, 1, 1, 1, NULL, NULL };
 

@@ -3721,8 +3721,8 @@ void Init_Miles()
 	MILES_ACTIONS[111]->object = &object_0042AD54;
 	MILES_ACTIONS[112]->object = &object_0042AD54;
 	MILES_ACTIONS[113]->object = &object_0042AD54;
-	MILES_MODELS[0] = &attach_0041FDD8;
-	MILES_MODELS[1] = &attach_0042CCC8;
+	MILES_MODELS[0] = &nudietails_attach;
+	MILES_MODELS[1] = &nudietails_flying_attach;
 	MILES_MODELS[2] = &attach_0042ABBC;
 	MILES_MODELS[3] = &attach_00437AAC;
 	MILES_MODELS[4] = &attach_0044517C;
@@ -3735,7 +3735,7 @@ void Init_Miles()
 	MILES_MODELS[11] = &attach_00446A08;
 	MILES_MODELS[12] = &attach_00447038;
 	MILES_MODELS[13] = &attach_004463D8;
-	MILES_MODELS[14] = &attach_0046DFE8;
+	MILES_MODELS[14] = &nudietails_item_attach;
 	MILES_MOTIONS[0] = &TailsCinematicHead;
 	WriteData((NJS_OBJECT**)0x7D2186, &JetAnklet);
 	WriteJump((void*)0x0045B840, Tails_Jiggle_mod);
@@ -4080,7 +4080,7 @@ void Init_Amy()
 	AMY_MODELS[0] = &attach_00016DE8;
 	AMY_MODELS[1] = &attach_000159A0;
 	AMY_MODELS[2] = &attach_0001C100;
-	AMY_MODELS[3] = &attach_00009C28;
+	AMY_MODELS[3] = &nudieamy_attach;
 	AMY_MODELS[4] = &attach_00018A90;
 	AMY_MOTIONS[0] = &AmyEVHead_Motion;
 	WriteData((NJS_OBJECT**)0x009858A4, &object_00584EE0);
@@ -4309,16 +4309,16 @@ extern "C"
 
 		//Ini Configuration
 		const IniFile *config = new IniFile(std::string(path) + "\\config.ini");
-		EnableSonic = config->getBool("Characters", "EnableSonic", true);
-		EnableMiles = config->getBool("Characters", "EnableMiles", true);
-		EnableKnuckles = config->getBool("Characters", "EnableKnuckles", true);
-		EnableAmy = config->getBool("Characters", "EnableAmy", true);
-		EnableBig = config->getBool("Characters", "EnableBig", true);
+		EnableSonic = true;//config->getBool("Characters", "EnableSonic", true);
+		EnableMiles = true;// config->getBool("Characters", "EnableMiles", true);
+		EnableKnuckles = true;//config->getBool("Characters", "EnableKnuckles", true);
+		EnableAmy = true;//config->getBool("Characters", "EnableAmy", true);
+		EnableBig = true;//config->getBool("Characters", "EnableBig", true);
 		EnableGamma = config->getBool("Characters", "EnableGamma", true);
 		EnableTikal = config->getBool("Characters", "EnableTikal", true);
 		EnableEggman = config->getBool("Characters", "EnableEggman", true);
 		EnableCDMetalSonic = config->getBool("Characters", "EnableCDMetalSonic", true);
-		EnableSkychase = config->getBool("Characters", "EnableSkychase", true);
+		EnableSkychase = true;//config->getBool("Characters", "EnableSkychase", true);
 
 		DisableSaturnSkyChase = config->getBool("Extras", "DisableSaturnSkyChase", false);
 		EnableExtras = config->getBool("Extras", "EnableExtras", false);
@@ -4596,13 +4596,18 @@ extern "C"
 					SONIC_OBJECTS[25]->model = object_0062840C.model;
 					SonicWeldInfo[23].VertIndexes = Sonic_LowerArmIndices_DC;
 				}
+
+
+
 			}
+
+
 			//Miles OnFrame Checks
 			if (EnableMiles)
 			{
 				if (MILES_OBJECTS[28]->sibling == MILES_OBJECTS[65])
 				{
-					object_00439824.model = object_0046EE44.model;
+					object_00439824.model = object_0046EE44.model; // Low poly shoes when in ball mode?
 					object_0043A634.model = object_0046FC84.model;
 					attach_00441460.mats->attr_texId = 24;
 				}
@@ -4612,6 +4617,9 @@ extern "C"
 					object_0043A634.model = &attach_0043A608;
 					attach_00441460.mats->attr_texId = 14;
 				}
+
+
+
 			}
 			//Knuckles OnFrame Checks
 			if (EnableKnuckles)
@@ -4665,6 +4673,42 @@ extern "C"
 					attach_002F0DF8.mats->attr_texId = 9; //Original texture
 				}
 			}
+
+			
+
+			//When in a cold level, balls shrink and nipples get hard~
+			if (CurrentLevel == LevelIDs_IceCap || CurrentLevel ==  LevelIDs_EggCarrierOutside && !IsEggCarrierSunk() && CurrentAct != 3 && CurrentAct != 5 && CurrentAct != 4 || CurrentLevel == LevelIDs_SkyDeck)
+			{
+				object_0056AD48.model = &attach_nudiesonic_smallballs; // Sonic torso
+
+				MILES_MODELS[0] = &nudietails_smallballs_attach; // Tails Torso
+				MILES_MODELS[1] = &nudietails_smallballs_attach; // Tails torso flying
+
+				MILES_MODELS[14] = &nudietails_smallballs_item_attach; // Tails torso rhythm badge
+
+				object_002D665C.model = &nudieknuckles_smallballs_attach; // Knuckles torso
+
+				object_00009C54.model = &nudieamy_perkynips_attach; //Amy torso
+
+				object_001229C8.model = &nudiebig_smallballs_attach; // Big Torso
+			}
+			else
+			{
+				object_0056AD48.model = &attach_nudiesonic; // Sonic torso
+
+
+				MILES_MODELS[0] = &nudietails_attach; // Tails Torso
+				MILES_MODELS[1] = &nudietails_flying_attach; // Tails torso flying
+
+				MILES_MODELS[14] = &nudietails_item_attach; // Tails torso rhythm badge
+
+				object_002D665C.model = &nudieknuckles_attach; // Knuckles torso
+
+				object_00009C54.model = &nudieamy_attach; //Amy torso
+
+				object_001229C8.model = &nudiebig_attach; // Big Torso
+			}
+
 		}
 	}
 }
