@@ -48,7 +48,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)\bin\</OutDir>
+    <OutDir>X:\Steam\steamapps\common\Sonic Adventure DX\mods\SA1_Chars_Nude</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -96,6 +96,9 @@
     <ClInclude Include="..\sadx-mod-loader\mod-loader-common\ModLoaderCommon\IniFile.hpp" />
     <ClInclude Include="..\sadx-mod-loader\mod-loader-common\ModLoaderCommon\TextConv.hpp" />
     <ClInclude Include="Amy.h" />
+    <ClInclude Include="Anim_SonicHumping.h" />
+    <ClInclude Include="Anim_TailsHumped.h" />
+    <ClInclude Include="Arousal.h" />
     <ClInclude Include="Big.h" />
     <ClInclude Include="e102.h" />
     <ClInclude Include="Eggman.h" />
@@ -103,6 +106,7 @@
     <ClInclude Include="EV_TR1.h" />
     <ClInclude Include="EV_TR2BEFORE.h" />
     <ClInclude Include="EV_TR2CHANGE.h" />
+    <ClInclude Include="helper.h" />
     <ClInclude Include="Knuckles.h" />
     <ClInclude Include="lanternapi.h" />
     <ClInclude Include="MetalSonic.h" />
@@ -111,6 +115,7 @@
     <ClInclude Include="NudieKnuckles.h" />
     <ClInclude Include="NudieSonic.h" />
     <ClInclude Include="NudieTails.h" />
+    <ClInclude Include="SexActs.h" />
     <ClInclude Include="SkyChase.h" />
     <ClInclude Include="OBJECT_SonicPointingFinger.h" />
     <ClInclude Include="Sonic.h" />
@@ -119,7 +124,10 @@
     <ClInclude Include="Tikal.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Arousal.cpp" />
+    <ClCompile Include="helper.cpp" />
     <ClCompile Include="SA1_Chars.cpp" />
+    <ClCompile Include="SexActs.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

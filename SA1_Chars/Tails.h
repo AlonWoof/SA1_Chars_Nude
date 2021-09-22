@@ -718,10 +718,6 @@ NJS_VECTOR normal_8D4738D60AEBA4DF54E[] = {
 	{ -0.7037489f, -0.710449f, 0 }
 };
 
-//TAILS NON-FLYING TORSO
-NJS_MODEL_SADX nudietails_attach = { nudietails_pos, nudietails_nrm, LengthOfArray(nudietails_pos), nudietails_meshset, nudietails_matlist, LengthOfArray(nudietails_meshset), LengthOfArray(nudietails_matlist),{ -0.053374f, -0.358762f, 0 }, 1.473012f, NULL };
-
-NJS_MODEL_SADX nudietails_smallballs_attach = { nudietails_smallballs_pos, nudietails_smallballs_nrm, LengthOfArray(nudietails_smallballs_pos), nudietails_smallballs_meshset, nudietails_smallballs_matlist, LengthOfArray(nudietails_smallballs_meshset), LengthOfArray(nudietails_smallballs_matlist),{ -0.053374f, -0.358762f, 0 }, 1.473012f, NULL };
 
 
 NJS_OBJECT object_0041FE04 = { NJD_EVAL_UNIT_POS | NJD_EVAL_UNIT_ANG | NJD_EVAL_UNIT_SCL | NJD_EVAL_BREAK, &nudietails_attach, 0, 0, 0, 0, 0, 0, 1, 1, 1, NULL, &object_0041ED2C };
@@ -5136,9 +5132,6 @@ NJS_VECTOR normal_8D47390D931DB1AEBE1[] = {
 	{ -0.1239129f, -0.03170925f, 0.9917864f },
 	{ -0.8846377f, 0.4662793f, 0.000008530915f }
 };
-
-//Flying Tails
-NJS_MODEL_SADX nudietails_flying_attach = { nudietails_flying_pos, nudietails_flying_nrm, LengthOfArray(nudietails_flying_pos), nudietails_flying_meshset, nudietails_flying_matlist, LengthOfArray(nudietails_flying_meshset), LengthOfArray(nudietails_flying_matlist),{ -0.053374f, -0.358762f, 0 }, 1.473012f, NULL };
 
 NJS_OBJECT object_0042CCF4 = { NJD_EVAL_UNIT_POS | NJD_EVAL_UNIT_ANG | NJD_EVAL_UNIT_SCL | NJD_EVAL_BREAK, &nudietails_flying_attach, 0, 0, 0, 0, 0, 0, 1, 1, 1, NULL, &object_0042BC1C };
 
@@ -16908,14 +16901,6 @@ NJS_VECTOR normal_8D47398CCD5688564DC[] = {
 	{ -0.875165f, 0.037211f, -0.482392f }
 };
 
-NJS_MODEL_SADX nudietails_item_attach = { nudietails_item_pos, nudietails_item_nrm, LengthOfArray(nudietails_item_pos), nudietails_item_meshset,
-nudietails_item_matlist, LengthOfArray(nudietails_item_meshset), LengthOfArray(nudietails_item_matlist),{ -0.362261f, -0.380229f, 0 }, 1.640486f, NULL };
-
-NJS_MODEL_SADX nudietails_item_flying_attach = { nudietails_item_flying_pos, nudietails_item_flying_nrm, LengthOfArray(nudietails_item_flying_pos), nudietails_item_flying_meshset,
-nudietails_item_flying_matlist, LengthOfArray(nudietails_item_flying_meshset), LengthOfArray(nudietails_item_flying_matlist),{ -0.362261f, -0.380229f, 0 }, 1.640486f, NULL };
-
-NJS_MODEL_SADX nudietails_smallballs_item_attach = { nudietails_smallballs_item_pos, nudietails_smallballs_item_nrm, LengthOfArray(nudietails_smallballs_item_pos), nudietails_smallballs_item_meshset,
-nudietails_smallballs_item_matlist, LengthOfArray(nudietails_smallballs_item_meshset), LengthOfArray(nudietails_smallballs_item_matlist),{ -0.362261f, -0.380229f, 0 }, 1.640486f, NULL };
 
 NJS_OBJECT object_8D4693E59583E794FE0 = { NJD_EVAL_UNIT_POS | NJD_EVAL_UNIT_ANG | NJD_EVAL_UNIT_SCL | NJD_EVAL_BREAK | NJD_EVAL_SKIP | NJD_EVAL_SHAPE_SKIP, &attach_nudiesonic, 0, 0, 0, 0, 0, 0, 1, 1, 1, NULL, NULL };
 

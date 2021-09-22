@@ -20,6 +20,8 @@
 #include "Eggman.h"
 #include "lanternapi.h"
 #include "MetalSonic.h"
+#include "Arousal.h"
+#include "SexActs.h"
 
 #define ReplacePVM(a, b) helperFunctions.ReplaceFile("system\\" a ".PVM", "system\\" b ".PVM");
 NJS_MATERIAL *TemporaryMaterialArray[] = { nullptr };
@@ -47,6 +49,11 @@ static bool EnableExtras = false;
 DataPointer(int, EVENT_ID, 0x03B2C570);
 FunctionPointer(void, PlaySonicIdleVoice, (int a1), 0x442360);
 static bool BigRodIgnoresSpecular = false;
+
+
+NJS_ACTION SonicHumpingAction = { &object_0056AF50, &SonicHumping };
+NJS_ACTION TailsHumpedAction = { &object_0042AD54, &TailsHumped };
+
 
 //Replacement Functions
 
@@ -211,6 +218,9 @@ const Sint16 MorphVertsT[] = {
 
 static void __cdecl Tails_Jiggle_mod(ObjectMaster *_this)
 {
+	if(currentSexAct == Sex_SonicHumpsTails)
+		return;
+
 	NJS_POINT3 *_src_points; // esi@4
 	float v21; // st7@32
 	Sint32 nbPoint; // [sp+14h] [bp-14h]@4
@@ -4081,7 +4091,7 @@ void Init_Amy()
 	AMY_MODELS[1] = &attach_000159A0;
 	AMY_MODELS[2] = &attach_0001C100;
 	AMY_MODELS[3] = &nudieamy_attach;
-	AMY_MODELS[4] = &attach_00018A90;
+	AMY_MODELS[4] = &nudieamy_attach;
 	AMY_MOTIONS[0] = &AmyEVHead_Motion;
 	WriteData((NJS_OBJECT**)0x009858A4, &object_00584EE0);
 	WriteJump((void*)0x007CCB90, InitAmyWeldInfo_mod);
@@ -4293,6 +4303,82 @@ void Init_Metal()
 	WriteJump((void*)0x7D18F0, InitMetalSonicWeldInfo_Fix);
 	WriteCall((void*)0x491701, PlaySonicIdleVoice_r);
 }
+
+
+void updateNudeModels()
+{
+
+	//When in a cold level, balls shrink and nipples get hard~
+	if (isColdLevel())
+	{
+		object_0056AD48.model = &attach_nudiesonic_smallballs; // Sonic torso
+
+		MILES_MODELS[0] = &nudietails_smallballs_attach; // Tails Torso
+		MILES_MODELS[1] = &nudietails_smallballs_attach; // Tails torso flying
+
+		MILES_MODELS[14] = &nudietails_smallballs_item_attach; // Tails torso rhythm badge
+
+		object_002D665C.model = &nudieknuckles_smallballs_attach; // Knuckles torso
+
+		object_00009C54.model = &nudieamy_perkynips_attach; //Amy torso
+
+		object_001229C8.model = &nudiebig_smallballs_attach; // Big Torso
+	}
+	else
+	{
+
+		object_0056AD48.model = &attach_nudiesonic; // Sonic torso
+
+		if (SonicAroused)
+			object_0056AD48.model = &nudiesonic_aroused_attach;
+		
+
+		MILES_MODELS[0] = &nudietails_attach; // Tails Torso
+		MILES_MODELS[1] = &nudietails_flying_attach; // Tails torso flying
+
+		MILES_MODELS[14] = &nudietails_item_attach; // Tails torso rhythm badge
+
+		if (TailsAroused)
+		{
+			MILES_MODELS[0] = &nudietails_aroused_attach; // Tails Torso
+			MILES_MODELS[1] = &nudietails_aroused_attach; // Tails torso flying
+
+			MILES_MODELS[14] = &nudietails_aroused_item_attach; // Tails torso rhythm badge
+			
+		}
+		
+		object_002D665C.model = &nudieknuckles_attach; // Knuckles torso
+
+		if (KnucklesAroused)
+			object_002D665C.model = &nudieknuckles_aroused_attach; // Knuckles torso
+
+		
+		object_00009C54.model = &nudieamy_attach; //Amy torso
+
+		if (AmyAroused)
+			object_00009C54.model = &nudieamy_aroused_attach; //Amy torso
+
+		if (BigAroused)
+			object_001229C8.model = &nudiebig_aroused_attach; // Big Torso
+	}
+
+	if (currentSexAct == Sex_SonicHumpsTails)
+	{
+		object_0042ABE8.model = &tails_hornyface_attach;
+	}
+	else
+	{
+		object_0042ABE8.model = &attach_0042ABBC;
+
+	}
+
+	updateArousal();
+	updateSex();
+	///drawArousalDebug();
+
+}
+
+
 
 extern "C"
 {
@@ -4676,38 +4762,7 @@ extern "C"
 
 			
 
-			//When in a cold level, balls shrink and nipples get hard~
-			if (CurrentLevel == LevelIDs_IceCap || CurrentLevel ==  LevelIDs_EggCarrierOutside && !IsEggCarrierSunk() && CurrentAct != 3 && CurrentAct != 5 && CurrentAct != 4 || CurrentLevel == LevelIDs_SkyDeck)
-			{
-				object_0056AD48.model = &attach_nudiesonic_smallballs; // Sonic torso
-
-				MILES_MODELS[0] = &nudietails_smallballs_attach; // Tails Torso
-				MILES_MODELS[1] = &nudietails_smallballs_attach; // Tails torso flying
-
-				MILES_MODELS[14] = &nudietails_smallballs_item_attach; // Tails torso rhythm badge
-
-				object_002D665C.model = &nudieknuckles_smallballs_attach; // Knuckles torso
-
-				object_00009C54.model = &nudieamy_perkynips_attach; //Amy torso
-
-				object_001229C8.model = &nudiebig_smallballs_attach; // Big Torso
-			}
-			else
-			{
-				object_0056AD48.model = &attach_nudiesonic; // Sonic torso
-
-
-				MILES_MODELS[0] = &nudietails_attach; // Tails Torso
-				MILES_MODELS[1] = &nudietails_flying_attach; // Tails torso flying
-
-				MILES_MODELS[14] = &nudietails_item_attach; // Tails torso rhythm badge
-
-				object_002D665C.model = &nudieknuckles_attach; // Knuckles torso
-
-				object_00009C54.model = &nudieamy_attach; //Amy torso
-
-				object_001229C8.model = &nudiebig_attach; // Big Torso
-			}
+			updateNudeModels();
 
 		}
 	}

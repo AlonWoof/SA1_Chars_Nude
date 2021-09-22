@@ -3852,11 +3852,6 @@ NJS_VECTOR normal_8D445DEFEB3C0F90F62[] = {
 	{ -0.029182f, -0.153265f, -0.987754f }
 };
 
-NJS_MODEL_SADX attach_nudiesonic = { nudiesonic_pos, nudiesonic_nrm, LengthOfArray(nudiesonic_pos), nudiesonic_meshset, 
-nudiesonic_matlist, LengthOfArray(nudiesonic_meshset), LengthOfArray(nudiesonic_matlist),{ 0.499601f, -0.045173f, 0 }, 1.826482f, NULL };
-
-NJS_MODEL_SADX attach_nudiesonic_smallballs = { nudiesonic_smallballs_pos, nudiesonic_smallballs_nrm, LengthOfArray(nudiesonic_smallballs_pos),  nudiesonic_smallballs_meshset,
- nudiesonic_smallballs_matlist, LengthOfArray(nudiesonic_smallballs_meshset), LengthOfArray(nudiesonic_smallballs_matlist),{ 0.499601f, -0.045173f, 0 }, 1.826482f, NULL };
 
 NJS_OBJECT object_0056AD48 = { NJD_EVAL_UNIT_POS | NJD_EVAL_UNIT_ANG | NJD_EVAL_UNIT_SCL | NJD_EVAL_BREAK, &attach_nudiesonic, 0, 0, 0, 0, 0, 0, 1, 1, 1, NULL, &object_00569E20 };
 
@@ -7889,10 +7884,8 @@ NJS_VECTOR normal_8D45594515B2EA70232[] = {
 	{ -0.182042f, -0.071188f, -0.980711f }
 };
 
-NJS_MODEL_SADX attach_0062DC54 = { nudiesupersonic_pos, nudiesupersonic_nrm, LengthOfArray(nudiesupersonic_pos), nudiesupersonic_meshset,
-nudiesupersonic_matlist, LengthOfArray(nudiesupersonic_meshset), LengthOfArray(nudiesupersonic_matlist),{ 0.626143f, -0.543791f, -0.003968f }, 2.074203f, NULL };
 
-NJS_OBJECT object_0062DC80 = { NJD_EVAL_UNIT_POS | NJD_EVAL_UNIT_ANG | NJD_EVAL_UNIT_SCL | NJD_EVAL_BREAK, &attach_0062DC54, 0, 0, 0, 0, 0, 0, 1, 1, 1, NULL, &object_0062CD58 };
+NJS_OBJECT object_0062DC80 = { NJD_EVAL_UNIT_POS | NJD_EVAL_UNIT_ANG | NJD_EVAL_UNIT_SCL | NJD_EVAL_BREAK, &nudiesupersonic_attach, 0, 0, 0, 0, 0, 0, 1, 1, 1, NULL, &object_0062CD58 };
 
 NJS_OBJECT object_0062DCB4 = { NJD_EVAL_UNIT_ANG | NJD_EVAL_UNIT_SCL | NJD_EVAL_HIDE | NJD_EVAL_BREAK, NULL, 0, -0.546144f, 0, 0, 0, 0, 1, 1, 1, NULL, NULL };
 

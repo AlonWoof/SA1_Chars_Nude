@@ -4,7 +4,6 @@
 #pragma warning(disable: 4267 4838)
 
 #include "SADXModLoader.h"
-
 #include "NudieBig.h"
 
 NJS_MATERIAL material_8D4DCB42FADA04DEFDC[] = {
@@ -3736,11 +3735,6 @@ NJS_VECTOR normal_8D4CB11D00EDF4CE6DE[] = {
 	{ -0.7094319f, 0.0006889999f, 0.704774f }
 };
 
-NJS_MODEL_SADX nudiebig_attach = { nudiebig_pos, nudiebig_nrm, LengthOfArray<Sint32>(nudiebig_pos), nudiebig_meshset, nudiebig_matlist,
-LengthOfArray<Uint16>(nudiebig_meshset), LengthOfArray<Uint16>(nudiebig_matlist),{ -0.499846f, -2.006735f, 0 }, 7.108439f, NULL };
-
-NJS_MODEL_SADX nudiebig_smallballs_attach = { nudiebig_smallballs_pos, nudiebig_smallballs_nrm, LengthOfArray<Sint32>(nudiebig_smallballs_pos), nudiebig_smallballs_meshset, nudiebig_smallballs_matlist,
-LengthOfArray<Uint16>(nudiebig_smallballs_meshset), LengthOfArray<Uint16>(nudiebig_smallballs_matlist),{ -0.499846f, -2.006735f, 0 }, 7.108439f, NULL };
 
 NJS_OBJECT object_001229C8 = { NJD_EVAL_UNIT_ANG | NJD_EVAL_UNIT_SCL | NJD_EVAL_BREAK, &nudiebig_attach, 0, 0.75f, 0, 0, 0, 0, 1, 1, 1, NULL, &object_001222AC };
 
