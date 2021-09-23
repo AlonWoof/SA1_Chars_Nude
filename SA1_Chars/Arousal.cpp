@@ -8,12 +8,14 @@
 
 #include "Arousal.h"
 #include "SexActs.h"
+#include "helper.h"
 
 bool SonicAroused, TailsAroused, KnucklesAroused, AmyAroused, BigAroused;
 int tailsArousedTimer = 0;
 bool levelHasLoaded = false;
 
 DataPointer(int, EVENT_ID, 0x03B2C570);
+
 
 void updateArousal()
 {

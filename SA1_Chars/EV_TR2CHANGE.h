@@ -4,6 +4,7 @@
 #pragma warning(disable: 4267 4838)
 
 #include "SADXModLoader.h"
+#include "NudieSonic.h"
 
 NJS_OBJECT object_02ED6550 = { NJD_EVAL_UNIT_ANG | NJD_EVAL_UNIT_SCL | NJD_EVAL_HIDE | NJD_EVAL_BREAK, NULL, 2.816374f, -2.627176f, 4.579528f, 0, 0, 0, 1, 1, 1, NULL, NULL };
 
@@ -414,7 +415,7 @@ NJS_VECTOR normal_8D4714A96BC6B352719[] = {
 	{ 0.6665379f, 0.670938f, 0.324914f }
 };
 
-NJS_MODEL_SADX attach_02ED7870 = { vertex_8D4714A96BC6B359B50, normal_8D4714A96BC6B352719, LengthOfArray(vertex_8D4714A96BC6B359B50), mesh_8D4714A96BC6B35EB94, material_8D4714A96BC6B35BB0A, LengthOfArray(mesh_8D4714A96BC6B35EB94), LengthOfArray(material_8D4714A96BC6B35BB0A),{ 0.468028f, -0.046032f, 0 }, 1.888235f, NULL };
+NJS_MODEL_SADX attach_02ED7870 = { nudiesonic_smallballs_pos, nudiesonic_smallballs_nrm, LengthOfArray(nudiesonic_smallballs_pos), nudiesonic_smallballs_meshset, material_8D4714A96BC6B35BB0A, LengthOfArray(nudiesonic_smallballs_meshset), LengthOfArray(material_8D4714A96BC6B35BB0A),{ 0.468028f, -0.046032f, 0 }, 1.888235f, NULL };
 
 NJS_OBJECT object_02ED789C = { NJD_EVAL_UNIT_POS | NJD_EVAL_UNIT_ANG | NJD_EVAL_UNIT_SCL | NJD_EVAL_BREAK, &attach_02ED7870, 0, 0, 0, 0, 0, 0, 1, 1, 1, NULL, NULL };
 

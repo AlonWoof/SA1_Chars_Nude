@@ -365,7 +365,8 @@ NJS_VECTOR normal_8D470435EF9F1292D5D[] = {
 	{ 0.658776f, 0.683002f, 0.315472f }
 };
 
-NJS_MODEL_SADX attach_02E4D638 = { vertex_8D470435EF9F129496E, normal_8D470435EF9F1292D5D, LengthOfArray(vertex_8D470435EF9F129496E), mesh_8D470435EF9F1298921, material_8D470435EF9F1294B1B, LengthOfArray(mesh_8D470435EF9F1298921), LengthOfArray(material_8D470435EF9F1294B1B),{ 0.408866f, -0.046033f, 0 }, 1.780318f, NULL };
+NJS_MODEL_SADX attach_02E4D638 = { nudiesonic_pos, nudiesonic_nrm, LengthOfArray(nudiesonic_pos), nudiesonic_meshset,
+material_8D470435EF9F1294B1B, LengthOfArray(nudiesonic_meshset), LengthOfArray(material_8D470435EF9F1294B1B),{ 0.408866f, -0.046033f, 0 }, 1.780318f, NULL };
 
 NJS_OBJECT object_02E4D664 = { NJD_EVAL_UNIT_POS | NJD_EVAL_UNIT_ANG | NJD_EVAL_UNIT_SCL | NJD_EVAL_BREAK, &attach_02E4D638, 0, 0, 0, 0, 0, 0, 1, 1, 1, NULL, NULL };
 

@@ -1903,6 +1903,18 @@ NJS_MATERIAL nudieamy_aroused_matlist[] = {
 	{ { 0xFFFFFFFF }, { 0x00000000 }, 0, 33, NJD_D_100 | NJD_FLAG_CLAMP_V | NJD_FLAG_CLAMP_U | NJD_FLAG_USE_TEXTURE | NJD_DA_INV_SRC | NJD_SA_SRC }
 };
 
+NJS_MATERIAL nudieamy_zero_matlist[] = {
+	{ { 0xFFFFFFFF }, { 0x00000000 }, 0, 2, NJD_D_100 | NJD_FLAG_CLAMP_V | NJD_FLAG_CLAMP_U | NJD_FLAG_USE_TEXTURE | NJD_DA_INV_SRC | NJD_SA_SRC },
+	{ { 0xFFFFFFFF }, { 0x00000000 }, 0, 5, NJD_D_100 | NJD_FLAG_CLAMP_V | NJD_FLAG_CLAMP_U | NJD_FLAG_USE_TEXTURE | NJD_DA_INV_SRC | NJD_SA_SRC },
+	{ { 0xFFFFFFFF }, { 0x00000000 }, 0, 4, NJD_D_100 | NJD_FLAG_CLAMP_V | NJD_FLAG_CLAMP_U | NJD_FLAG_USE_TEXTURE | NJD_DA_INV_SRC | NJD_SA_SRC },
+	{ { 0xFFFFFFFF }, { 0x00000000 }, 0, 6, NJD_D_100 | NJD_FLAG_CLAMP_V | NJD_FLAG_CLAMP_U | NJD_FLAG_USE_TEXTURE | NJD_DA_INV_SRC | NJD_SA_SRC },
+	{ { 0xFFFFFFFF }, { 0x00000000 }, 0, 7, NJD_D_100 | NJD_FLAG_CLAMP_V | NJD_FLAG_CLAMP_U | NJD_FLAG_USE_TEXTURE | NJD_DA_INV_SRC | NJD_SA_SRC },
+	{ { 0xFFFFFFFF }, { 0x00000000 }, 0, 10, NJD_D_100 | NJD_FLAG_CLAMP_V | NJD_FLAG_CLAMP_U | NJD_FLAG_USE_TEXTURE | NJD_DA_INV_SRC | NJD_SA_SRC },
+	{ { 0xFFFFFFFF }, { 0x00000000 }, 0, 19, NJD_D_100 | NJD_FLAG_CLAMP_V | NJD_FLAG_CLAMP_U | NJD_FLAG_USE_TEXTURE | NJD_DA_INV_SRC | NJD_SA_SRC },
+	{ { 0xFFFFFFFF }, { 0x00000000 }, 0, 8, NJD_D_100 | NJD_FLAG_CLAMP_V | NJD_FLAG_CLAMP_U | NJD_FLAG_USE_TEXTURE | NJD_DA_INV_SRC | NJD_SA_SRC }
+};
+
+
 Sint16 nudieamy_aroused_p5[] = {
 	0x8000u | 55, 39, 44, 0, 179, 176, 43, 200, 88, 201, 38, 197, 10, 196, 1, 198, 87, 202, 42, 199, 203, 172, 37, 46, 35, 33, 53, 57, 152, 132, 135, 68, 106, 105, 122, 117, 160, 130, 153, 154, 180, 183, 72, 71, 148, 131, 74, 184, 186, 157, 159, 139, 121, 137, 106, 135,
 	11, 53, 152, 67, 135, 107, 137, 120, 139, 156, 157, 184,
@@ -3580,5 +3592,8 @@ NJS_VECTOR nudieamy_aroused_nrm[] = {
 };
 
 NJS_MODEL_SADX nudieamy_aroused_attach = { nudieamy_aroused_pos, nudieamy_aroused_nrm, LengthOfArray<Sint32>(nudieamy_aroused_pos), nudieamy_aroused_meshset, nudieamy_aroused_matlist, LengthOfArray<Uint16>(nudieamy_aroused_meshset), LengthOfArray<Uint16>(nudieamy_aroused_matlist), { -0.1365152f, -0.0251376f, 0 }, 1.221645f, NULL };
+
+NJS_MODEL_SADX nudieamy_zero_attach = { nudieamy_aroused_pos, nudieamy_aroused_nrm, LengthOfArray<Sint32>(nudieamy_aroused_pos), nudieamy_aroused_meshset, nudieamy_zero_matlist, LengthOfArray<Uint16>(nudieamy_aroused_meshset), LengthOfArray<Uint16>(nudieamy_zero_matlist), { -0.1365152f, -0.0251376f, 0 }, 1.221645f, NULL };
+
 
 #pragma endregion

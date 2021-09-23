@@ -54,6 +54,8 @@ static bool BigRodIgnoresSpecular = false;
 NJS_ACTION SonicHumpingAction = { &object_0056AF50, &SonicHumping };
 NJS_ACTION TailsHumpedAction = { &object_0042AD54, &TailsHumped };
 
+DataPointer(NJS_MODEL_SADX, Amy_EggRobo_Torso, 0x03197354);
+
 
 //Replacement Functions
 
@@ -4096,6 +4098,8 @@ void Init_Amy()
 	WriteData((NJS_OBJECT**)0x009858A4, &object_00584EE0);
 	WriteJump((void*)0x007CCB90, InitAmyWeldInfo_mod);
 	WriteJump((void*)0x007CD000, InitNPCAmyWeldInfo_mod);
+
+	Amy_EggRobo_Torso = nudieamy_zero_attach;
 }
 
 void Init_Big()
@@ -4375,7 +4379,6 @@ void updateNudeModels()
 	updateArousal();
 	updateSex();
 	///drawArousalDebug();
-
 }
 
 

@@ -747,7 +747,8 @@ NJS_VECTOR normal_00016A68[] = {
 	{ 0.616327f, 0.720939f, 0.316842f }
 };
 
-NJS_MODEL_SADX attach_00016C0C = { vertex_000168C4, normal_00016A68, LengthOfArray<Sint32>(vertex_000168C4), meshlist_00016894, matlist_00016654, LengthOfArray<Uint16>(meshlist_00016894), LengthOfArray<Uint16>(matlist_00016654),{ 0.451663f, -0.046033f, 0.001008f }, 1.886242f, NULL };
+NJS_MODEL_SADX attach_00016C0C = { nudiesonic_pos, nudiesonic_nrm, LengthOfArray<Sint32>(nudiesonic_pos), nudiesonic_meshset, matlist_00016654,
+LengthOfArray<Uint16>(nudiesonic_meshset), LengthOfArray<Uint16>(matlist_00016654),{ 0.451663f, -0.046033f, 0.001008f }, 1.886242f, NULL };
 
 NJS_OBJECT object_00016C34 = { NJD_EVAL_UNIT_POS | NJD_EVAL_UNIT_ANG | NJD_EVAL_UNIT_SCL | NJD_EVAL_BREAK, &attach_00016C0C, 0, 0, 0, 0, 0, 0, 1, 1, 1, NULL, NULL };
 
