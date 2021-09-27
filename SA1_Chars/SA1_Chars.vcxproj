@@ -113,6 +113,7 @@
     <ClInclude Include="NudieAmy.h" />
     <ClInclude Include="NudieBig.h" />
     <ClInclude Include="NudieKnuckles.h" />
+    <ClInclude Include="NudieKnuxTribe.h" />
     <ClInclude Include="NudieSonic.h" />
     <ClInclude Include="NudieTails.h" />
     <ClInclude Include="SexActs.h" />

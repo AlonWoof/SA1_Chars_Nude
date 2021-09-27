@@ -15,7 +15,8 @@ FunctionPointer(ObjectMaster*, EV_GetPlayer, (int no), 0x42FC40);
 enum SexActs
 {
 	Sex_None,
-	Sex_SonicHumpsTails
+	Sex_SonicHumpsTails,
+	Sex_Amy_Masturbate
 };
 
 void updateSex();

@@ -49,6 +49,16 @@ void updateArousal()
 		if (EntityData1Ptrs[1]->CharID == Characters_Tails)
 			SonTails_ArousalEvents();
 	}
+
+	if (EntityData1Ptrs[0] != NULL && CurrentCharacter == Characters_Amy)
+	{
+		Amy_ArousalEvents();
+	}
+}
+
+void Amy_ArousalEvents()
+{
+
 }
 
 void SonTails_ArousalEvents()
@@ -68,17 +78,19 @@ void SonTails_ArousalEvents()
 
 		//DisplayDebugStringFormatted(NJM_LOCATION(8, 16), "Tails Arousal Timer: %i",tailsArousedTimer);
 
-		if (tailsArousedTimer > 90 && EntityData1Ptrs[1]->CharID == Characters_Tails)
+		if (tailsArousedTimer > 900 && EntityData1Ptrs[1]->CharID == Characters_Tails && !TailsAroused)
 		{
 			TailsAroused = true;
+			tailsArousedTimer = 0;
 		}
 
-		if (tailsArousedTimer > 150)
+		if (tailsArousedTimer > 900 && !SonicAroused && TailsAroused && EntityData1Ptrs[1]->CharID == Characters_Tails)
 		{
 			SonicAroused = true;
+			tailsArousedTimer = 0;
 		}
 
-		if (tailsArousedTimer > 360)
+		if (tailsArousedTimer > 3600 && SonicAroused && TailsAroused && EntityData1Ptrs[1]->CharID == Characters_Tails)
 		{
 			int roll = rand() % 100;
 
@@ -87,8 +99,13 @@ void SonTails_ArousalEvents()
 			if (isPublicPlace())
 				percentChance = 10;
 
-			if (CurrentLevel == LevelIDs_Casinopolis)
+			//Steamy shower time~
+			if (CurrentLevel == LevelIDs_Casinopolis && CurrentAct == 0)
 				percentChance = 75;
+			
+			//Gross, who would do that in the trash zone? That's how you get an infection.
+			if (CurrentLevel == LevelIDs_Casinopolis && CurrentAct == 1)
+				percentChance = 0;
 
 			//percentChance = 100;
 

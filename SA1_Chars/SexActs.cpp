@@ -24,22 +24,20 @@ void Sex_SonicHumpTails_Start()
 void Sex_SonicHumpTails_Loop()
 {
 	
-	//EntityData1Ptrs[0]->Object->
 	CharObj2Ptrs[0]->AnimationThing.Index = 0;
 	CharObj2Ptrs[1]->AnimationThing.Index = 0;
-	//EV_SetFace(EV_GetPlayer(1), "bbb");
 
 	CharObj2Ptrs[0]->AnimationThing.AnimData->Animation = &SonicHumpingAction;
 	CharObj2Ptrs[1]->AnimationThing.AnimData->Animation = &TailsHumpedAction;
 	EntityData1Ptrs[1]->Position = EntityData1Ptrs[0]->Position;
 	EntityData1Ptrs[1]->Rotation = EntityData1Ptrs[0]->Rotation;
 
-	//EV_LoadPvm
-	
 }
+
 
 void updateSex()
 {
+
 	switch (currentSexAct)
 	{
 		case Sex_None:
@@ -65,6 +63,8 @@ void updateSex()
 	}
 }
 
+
+
 void stopSex()
 {
 	currentSexAct = Sex_None;
@@ -79,6 +79,5 @@ void stopSex()
 		CharObj2Ptrs[1]->AnimationThing.AnimData->Animation = originalPlayer2Idle;
 		EntityData1Ptrs[1]->Action = 1;
 	}
-
 	
 }

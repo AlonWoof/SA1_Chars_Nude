@@ -23,6 +23,8 @@
 #include "Arousal.h"
 #include "SexActs.h"
 
+#include "NudieKnuxTribe.h"
+
 #define ReplacePVM(a, b) helperFunctions.ReplaceFile("system\\" a ".PVM", "system\\" b ".PVM");
 NJS_MATERIAL *TemporaryMaterialArray[] = { nullptr };
 
@@ -55,6 +57,9 @@ NJS_ACTION SonicHumpingAction = { &object_0056AF50, &SonicHumping };
 NJS_ACTION TailsHumpedAction = { &object_0042AD54, &TailsHumped };
 
 DataPointer(NJS_MODEL_SADX, Amy_EggRobo_Torso, 0x03197354);
+
+HMODULE handle = GetModuleHandle(L"ADV03MODELS");
+NJS_OBJECT** ___ADV03_OBJECTS = (NJS_OBJECT**)GetProcAddress(handle, "___ADV03_OBJECTS");
 
 
 //Replacement Functions
@@ -4376,6 +4381,8 @@ void updateNudeModels()
 
 	}
 
+
+
 	updateArousal();
 	updateSex();
 	///drawArousalDebug();
@@ -4630,6 +4637,11 @@ extern "C"
 				}
 			}
 		}
+
+		//Knuckles tribe edits
+		___ADV03_OBJECTS[3]->child->child->child->model = &nudieknuxfam_003;
+		___ADV03_OBJECTS[5]->child->child->child->model = &nudieknuxfam_005;
+		___ADV03_OBJECTS[6]->child->child->child->model = &nudieknuxfam_006;
 	}
 
 	__declspec(dllexport) void __cdecl OnFrame()

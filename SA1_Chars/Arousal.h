@@ -16,5 +16,6 @@ void resetArousal();
 void drawArousalDebug();
 void refreshArousal();
 void SonTails_ArousalEvents();
+void Amy_ArousalEvents();
 bool isPublicPlace();
 //bool checkInsideRadius(NJS_VECTOR point, float dist);
