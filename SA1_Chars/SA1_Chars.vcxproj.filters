@@ -108,6 +108,9 @@
     <ClInclude Include="NudieKnuxTribe.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="NudieTikal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

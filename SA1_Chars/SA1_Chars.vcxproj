@@ -48,7 +48,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>X:\Steam\steamapps\common\Sonic Adventure DX\mods\SA1_Chars_Nude</OutDir>
+    <OutDir>X:\SteamLibrary\steamapps\common\Sonic Adventure DX\mods\SA1_Chars_Nude</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -116,6 +116,7 @@
     <ClInclude Include="NudieKnuxTribe.h" />
     <ClInclude Include="NudieSonic.h" />
     <ClInclude Include="NudieTails.h" />
+    <ClInclude Include="NudieTikal.h" />
     <ClInclude Include="SexActs.h" />
     <ClInclude Include="SkyChase.h" />
     <ClInclude Include="OBJECT_SonicPointingFinger.h" />

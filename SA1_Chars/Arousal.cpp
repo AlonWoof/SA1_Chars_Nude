@@ -11,7 +11,7 @@
 #include "helper.h"
 
 bool SonicAroused, TailsAroused, KnucklesAroused, AmyAroused, BigAroused;
-int tailsArousedTimer = 0;
+int arousalTimer = 0;
 bool levelHasLoaded = false;
 
 DataPointer(int, EVENT_ID, 0x03B2C570);
@@ -59,6 +59,11 @@ void updateArousal()
 void Amy_ArousalEvents()
 {
 
+	if (AmyAroused)
+	{
+		
+	}
+
 }
 
 void SonTails_ArousalEvents()
@@ -74,23 +79,23 @@ void SonTails_ArousalEvents()
 
 	if (GetPlayerDistance(EntityData1Ptrs[1], 0) < 30.0f && currentSexAct == Sex_None)
 	{
-		tailsArousedTimer++;
+		arousalTimer++;
 
-		//DisplayDebugStringFormatted(NJM_LOCATION(8, 16), "Tails Arousal Timer: %i",tailsArousedTimer);
+		//DisplayDebugStringFormatted(NJM_LOCATION(8, 16), "Tails Arousal Timer: %i",arousalTimer);
 
-		if (tailsArousedTimer > 900 && EntityData1Ptrs[1]->CharID == Characters_Tails && !TailsAroused)
+		if (arousalTimer > 900 && EntityData1Ptrs[1]->CharID == Characters_Tails && !TailsAroused)
 		{
 			TailsAroused = true;
-			tailsArousedTimer = 0;
+			arousalTimer = 0;
 		}
 
-		if (tailsArousedTimer > 900 && !SonicAroused && TailsAroused && EntityData1Ptrs[1]->CharID == Characters_Tails)
+		if (arousalTimer > 900 && !SonicAroused && TailsAroused && EntityData1Ptrs[1]->CharID == Characters_Tails)
 		{
 			SonicAroused = true;
-			tailsArousedTimer = 0;
+			arousalTimer = 0;
 		}
 
-		if (tailsArousedTimer > 3600 && SonicAroused && TailsAroused && EntityData1Ptrs[1]->CharID == Characters_Tails)
+		if (arousalTimer > 3600 && SonicAroused && TailsAroused && EntityData1Ptrs[1]->CharID == Characters_Tails)
 		{
 			int roll = rand() % 100;
 
@@ -120,19 +125,19 @@ void SonTails_ArousalEvents()
 				currentSexAct = Sex_SonicHumpsTails;
 			}
 
-			tailsArousedTimer = -3600;
+			arousalTimer = -3600;
 		}
 	}
 	else
 	{
-		if (tailsArousedTimer > 0)
-			tailsArousedTimer--;
+		if (arousalTimer > 0)
+			arousalTimer--;
 	}
 }
 
 void refreshArousal()
 {
-	tailsArousedTimer = 0;
+	arousalTimer = 0;
 
 	SonicAroused = rollArousalChance(Characters_Sonic);
 	TailsAroused = rollArousalChance(Characters_Tails);

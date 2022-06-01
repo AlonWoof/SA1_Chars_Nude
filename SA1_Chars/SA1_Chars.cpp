@@ -62,6 +62,10 @@ HMODULE handle = GetModuleHandle(L"ADV03MODELS");
 NJS_OBJECT** ___ADV03_OBJECTS = (NJS_OBJECT**)GetProcAddress(handle, "___ADV03_OBJECTS");
 
 
+DataPointer(NJS_OBJECT, Tikal_Skirt_Obj, 0x008D24C4);
+DataPointer(NJS_MODEL_SADX, Tikal_Torso, 0x008D4784);
+
+
 //Replacement Functions
 
 void PlaySonicIdleVoice_r(int a1)
@@ -4245,6 +4249,8 @@ void Init_Tikal()
 	TikalWeldInfo[1].ModelB = &object_00002B38;
 	TikalWeldInfo[1].VertexPairCount = 4;
 	TikalWeldInfo[1].VertIndexes = (unsigned short *)&Tikal_RightHandIndices_DC;
+
+
 }
 
 void Init_Eggman()
@@ -4367,6 +4373,8 @@ void updateNudeModels()
 		if (AmyAroused)
 			object_00009C54.model = &nudieamy_aroused_attach; //Amy torso
 
+		object_001229C8.model = &nudiebig_attach; // Big Torso
+
 		if (BigAroused)
 			object_001229C8.model = &nudiebig_aroused_attach; // Big Torso
 	}
@@ -4381,7 +4389,12 @@ void updateNudeModels()
 
 	}
 
+	//&TIKAL_BODY->model = &nudieamy_aroused_attach;
+	Tikal_Torso = nudietikal_attach;
+	Tikal_Skirt_Obj.evalflags = NJD_EVAL_HIDE;
 
+	TikalWeldInfo[11].VertexPairCount = 0;
+	TikalWeldInfo[12].VertexPairCount = 0;
 
 	updateArousal();
 	updateSex();
