@@ -47,6 +47,8 @@ static int MSHover = Normal;
 static bool EnableCDMetalSonic = true;
 static bool EnableExtras = false;
 
+static bool arousalDebug = false;
+
 //Additional Data Bits
 DataPointer(int, EVENT_ID, 0x03B2C570);
 FunctionPointer(void, PlaySonicIdleVoice, (int a1), 0x442360);
@@ -55,6 +57,7 @@ static bool BigRodIgnoresSpecular = false;
 
 NJS_ACTION SonicHumpingAction = { &object_0056AF50, &SonicHumping };
 NJS_ACTION TailsHumpedAction = { &object_0042AD54, &TailsHumped };
+NJS_ACTION AmyMasturbateAction = { &object_00016460, &AmyFapping };
 
 DataPointer(NJS_MODEL_SADX, Amy_EggRobo_Torso, 0x03197354);
 
@@ -4381,12 +4384,26 @@ void updateNudeModels()
 
 	if (currentSexAct == Sex_SonicHumpsTails)
 	{
-		object_0042ABE8.model = &tails_hornyface_attach;
+		object_0042ABE8.model = &tails_face_sex_attach;
 	}
 	else
 	{
 		object_0042ABE8.model = &attach_0042ABBC;
+	}
 
+	if (currentSexAct == Sex_Amy_Masturbate)
+	{
+		object_000159CC.model = &amy_face_sex_attach;
+		object_000116BC.evalflags = (object_000116BC.evalflags | NJD_EVAL_HIDE);
+		object_000119CC.evalflags = (object_000119CC.evalflags | NJD_EVAL_HIDE);
+		
+	}
+	else
+	{
+		object_000159CC.model = &attach_000159A0;
+
+		object_000116BC.evalflags = (object_000116BC.evalflags & ~NJD_EVAL_HIDE);
+		object_000119CC.evalflags = (object_000119CC.evalflags & ~NJD_EVAL_HIDE);
 	}
 
 	//&TIKAL_BODY->model = &nudieamy_aroused_attach;
@@ -4398,7 +4415,9 @@ void updateNudeModels()
 
 	updateArousal();
 	updateSex();
-	///drawArousalDebug();
+
+	if(arousalDebug)
+		drawArousalDebug();
 }
 
 
@@ -4428,6 +4447,8 @@ extern "C"
 		EnableEggman = config->getBool("Characters", "EnableEggman", true);
 		EnableCDMetalSonic = config->getBool("Characters", "EnableCDMetalSonic", true);
 		EnableSkychase = true;//config->getBool("Characters", "EnableSkychase", true);
+
+		arousalDebug = config->getBool("Debug", "ArousalDebug", false);
 
 		DisableSaturnSkyChase = config->getBool("Extras", "DisableSaturnSkyChase", false);
 		EnableExtras = config->getBool("Extras", "EnableExtras", false);

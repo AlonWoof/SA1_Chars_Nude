@@ -21,6 +21,25 @@ void Sex_SonicHumpTails_Start()
 	currentSexAct = Sex_SonicHumpsTails;
 }
 
+void Sex_AmyMasturbate_Start()
+{
+	EntityData1Ptrs[0]->Action = 13;
+	originalPlayer1Idle = AMY_ACTIONS[0];
+
+	currentSexAct = Sex_Amy_Masturbate;
+}
+
+void Sex_AmyMasturbate_Loop()
+{
+
+	CharObj2Ptrs[0]->AnimationThing.Index = 0;
+
+	CharObj2Ptrs[0]->AnimationThing.AnimData->Animation = &AmyMasturbateAction;
+	//EntityData1Ptrs[1]->Position = EntityData1Ptrs[0]->Position;
+	//EntityData1Ptrs[1]->Rotation = EntityData1Ptrs[0]->Rotation;
+
+}
+
 void Sex_SonicHumpTails_Loop()
 {
 	
@@ -45,6 +64,10 @@ void updateSex()
 
 		case Sex_SonicHumpsTails:
 			Sex_SonicHumpTails_Loop();
+			break;
+
+		case Sex_Amy_Masturbate:
+			Sex_AmyMasturbate_Loop();
 			break;
 	}
 

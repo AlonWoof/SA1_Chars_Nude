@@ -1,5 +1,7 @@
 #pragma once
 
+#include "helper.h"
+
 #define SonicBaseArousal 4; //A nice somewhat rare chance.
 #define TailsBaseArousal 4; //Tails might get aroused if he watches sonic shower, but otherwise equal
 #define KnucklesBaseArousal 3; //He's more serious so less horny power.
@@ -19,3 +21,6 @@ void SonTails_ArousalEvents();
 void Amy_ArousalEvents();
 bool isPublicPlace();
 //bool checkInsideRadius(NJS_VECTOR point, float dist);
+
+
+

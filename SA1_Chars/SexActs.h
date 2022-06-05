@@ -4,6 +4,7 @@
 
 extern NJS_ACTION SonicHumpingAction;
 extern NJS_ACTION TailsHumpedAction;
+extern NJS_ACTION AmyMasturbateAction;
 extern int currentSexAct;
 extern NJS_ACTION* originalPlayer1Idle;
 extern NJS_ACTION* originalPlayer2Idle;
@@ -22,3 +23,4 @@ enum SexActs
 void updateSex();
 void stopSex();
 void Sex_SonicHumpTails_Loop();
+void Sex_AmyMasturbate_Loop();

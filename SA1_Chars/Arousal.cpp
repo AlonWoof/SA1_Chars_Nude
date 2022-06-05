@@ -1,4 +1,4 @@
-
+﻿
 
 #include "stdafx.h"
 
@@ -16,9 +16,49 @@ bool levelHasLoaded = false;
 
 DataPointer(int, EVENT_ID, 0x03B2C570);
 
+WorldLocation CasinoShowersLocation = { LevelIDs_Casinopolis, 0, {-246.0f, -199.0f, -548.0f}, 200.0f };
+WorldLocation TailsWorkshopLocation = { LevelIDs_MysticRuins, 0, {1476.0f, 200.0f, 772.0f}, 500.0f };
+
+WorldLocation coldPlaces[] =
+{
+	{LevelIDs_MysticRuins,1,{-1428.0f,68.2f,358.20f},700.0f}
+};
+
+WorldLocation privatePlaces[] =
+{
+	{LevelIDs_MysticRuins,2,{0.0f,0.0f,0.0f},80000.0f},
+	{LevelIDs_MysticRuins,1,{0.0f,0.0f,0.0f},80000.0f},
+	{LevelIDs_MysticRuins,0,{0.0f,0.0f,0.0f},80000.0f},
+
+	//Behind the walls at town hall.
+	{LevelIDs_StationSquare,0,{393.0f, 0.0f, 448.0f},80.0f},
+	{LevelIDs_StationSquare,0,{160.0f, 0.0f, 448.0f},80.0f},
+
+	//Behind the Twinkle Park entrance
+	{LevelIDs_StationSquare,3,{690.0f, 0.0f, 1598.0f},100.0f},
+
+	//Tails Jet Anklet location
+	{LevelIDs_StationSquare,3,{662.0f, 56.0f, 1270.0f},60.0f},
+
+	//Alley by Casinopolis
+	{LevelIDs_StationSquare,1,{-701.0f, 0.0f, 1330.0f},200.0f},
+
+	{LevelIDs_SSGarden, 0, {0.0f, 0.0f, 0.0f}, 10000.0f},
+	{LevelIDs_MRGarden, 0, {0.0f, 0.0f, 0.0f}, 10000.0f},
+	{LevelIDs_ECGarden, 0, {0.0f, 0.0f, 0.0f}, 10000.0f},
+
+	//Tails workshop
+	{ LevelIDs_MysticRuins, 0, {1476.0f, 200.0f, 772.0f}, 200.0f },
+
+	//Casinopolis showers
+	CasinoShowersLocation
+};
+
+
 
 void updateArousal()
 {
+
 
 	if (GameState == 20 || GameState == 21 || GameState == 17 || GameState == 5 || GameState == 9)
 	{
@@ -53,15 +93,68 @@ void updateArousal()
 	if (EntityData1Ptrs[0] != NULL && CurrentCharacter == Characters_Amy)
 	{
 		Amy_ArousalEvents();
+
+		if (EntityData1Ptrs[1])
+		{
+			//Boys ♥
+
+			if (EntityData1Ptrs[1]->CharID == Characters_Tails)
+				AmyAroused = true;
+
+			if (EntityData1Ptrs[1]->CharID == Characters_Sonic)
+				AmyAroused = true;
+		}
 	}
 }
 
 void Amy_ArousalEvents()
 {
 
+	if (currentSexAct != Sex_None)
+		return;
+
+	if (CharObj2Ptrs[0] == NULL)
+		return;
+
+	//Only roll when idle timer is at this specific frame.
+	if (CharObj2Ptrs[0]->IdleTime != 1300)
+		return;
+
+
 	if (AmyAroused)
 	{
-		
+
+		int roll = rand() % 100;
+
+		int percentChance = 75;
+
+		if (isPublicPlace())
+			percentChance = 10;
+
+		if (roll <= percentChance)
+		{
+			EntityData1Ptrs[0]->Action = 13;
+
+			originalPlayer1Idle = CharObj2Ptrs[0]->AnimationThing.AnimData->Animation;
+
+			currentSexAct = Sex_Amy_Masturbate;
+		}
+	}
+	else
+	{
+		//Random chance of arousal because she horny a lot.
+		int roll = rand() % 100;
+
+		int percentChance = 5;
+
+		//Maybe she's an exhibitionist? X3
+		if (isPublicPlace())
+			percentChance = 15;
+
+		if (roll <= percentChance)
+		{
+			AmyAroused = true;
+		}
 	}
 
 }
@@ -77,7 +170,8 @@ void SonTails_ArousalEvents()
 		}
 	}
 
-	if (GetPlayerDistance(EntityData1Ptrs[1], 0) < 30.0f && currentSexAct == Sex_None)
+
+	if (GetPlayerDistance(EntityData1Ptrs[1], 0) < 100.0f && currentSexAct == Sex_None)
 	{
 		arousalTimer++;
 
@@ -99,14 +193,14 @@ void SonTails_ArousalEvents()
 		{
 			int roll = rand() % 100;
 
-			int percentChance = 50;
+			int percentChance = 75;
 
 			if (isPublicPlace())
 				percentChance = 10;
 
 			//Steamy shower time~
 			if (CurrentLevel == LevelIDs_Casinopolis && CurrentAct == 0)
-				percentChance = 75;
+				percentChance = 100;
 			
 			//Gross, who would do that in the trash zone? That's how you get an infection.
 			if (CurrentLevel == LevelIDs_Casinopolis && CurrentAct == 1)
@@ -155,6 +249,23 @@ void resetArousal()
 	BigAroused = false;
 }
 
+bool isInLocation(WorldLocation * wl)
+{
+	if (CurrentLevel == wl->levelID && CurrentAct == wl->act)
+	{
+
+		DrawCollisionSphere(&wl->position, wl->range);
+
+		if (IsPlayerInsideSphere(&wl->position, wl->range))
+		{
+			return true;
+		}
+
+	}
+
+	return false;
+}
+
 bool isColdLevel()
 {
 	if (CurrentLevel == LevelIDs_IceCap || CurrentLevel == LevelIDs_SkyDeck)
@@ -164,11 +275,26 @@ bool isColdLevel()
 		return true;
 
 
+	for each (WorldLocation wl in coldPlaces)
+	{
+		if (isInLocation(&wl))
+			return true;
+	}
+
 	return false;
 }
 
 bool isPublicPlace()
 {
+	for each (WorldLocation wl in privatePlaces)
+	{
+		if (isInLocation(&wl))
+		{
+			return false;
+		}
+	}
+
+
 	if (CurrentLevel == LevelIDs_StationSquare && CurrentAct != 2 && CurrentAct != 5)
 		return true;
 
@@ -209,7 +335,7 @@ bool rollArousalChance(Characters chara)
 		break;
 	}
 
-	int chance = rand() % 100;
+	int chance = rand() % 200;
 
 	if (chance <= hornylevel)
 		return true;
@@ -245,6 +371,15 @@ void drawArousalDebug()
 	else
 		DisplayDebugStringFormatted(NJM_LOCATION(32, 20), "   Big is normal.");
 
+	if(isColdLevel())
+		DisplayDebugStringFormatted(NJM_LOCATION(32, 22), "It's cold here.");
+	else
+		DisplayDebugStringFormatted(NJM_LOCATION(32, 22), "Temperature is warm.");
+
+	if(isPublicPlace())
+		DisplayDebugStringFormatted(NJM_LOCATION(32, 23), "Public place, highly visible.");
+	else
+		DisplayDebugStringFormatted(NJM_LOCATION(32, 23), "This place is secluded~");
 }
 
 
